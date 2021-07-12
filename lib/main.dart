@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/starwars_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,11 +15,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Starwars'),
-        ),
-        // body: StarwarList()
-      ),
+          appBar: AppBar(
+            title: Text('Starwars'),
+          ),
+          body: StarwarsList()),
     );
   }
 }

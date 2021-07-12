@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 
 class People {
   final String name;
+
   People(this.name);
 
   factory People.fromJson(dynamic data) {
