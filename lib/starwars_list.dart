@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:myapp/starwars_repo.dart';
 
 class StarwarsList extends StatefulWidget {
@@ -34,7 +35,9 @@ class _StarwarsListStates extends State {
     return ListView.builder(
         itemCount: _people.length,
         itemBuilder: (context, index) {
-          return Text(_people[index].name);
+          return Card(
+            child: Text(_people[index].name + " " + _people[index].url),
+          );
         });
   }
 }
