@@ -20,15 +20,18 @@ class _StarwarsListStates extends State {
     super.initState();
     _page = 1;
     _people = [];
+
     fetchPeople();
   }
 
   Future<void> fetchPeople() async {
-    var people = await _repo.fetchPeople(page: _page);
-    setState(() {
-      _people = List<People>.from(people);
-      _people.addAll(people);
-    });
+    if (_page <= 9) {
+      var people = await _repo.fetchPeople(page: _page);
+      setState(() {
+        _people.addAll(people);
+        _page++;
+      });
+    }
   }
 
   Widget build(BuildContext context) {
@@ -36,8 +39,11 @@ class _StarwarsListStates extends State {
         itemCount: _people.length,
         itemBuilder: (context, index) {
           return Card(
-            child: Text(_people[index].name + " " + _people[index].url),
-          );
+              child: Text(_people[index].name +
+                  " " +
+                  _people[index].imageIndex +
+                  "length: " +
+                  _people.length.toString()));
         });
   }
 }

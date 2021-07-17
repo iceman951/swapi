@@ -11,33 +11,35 @@ class People {
   final String gender;
   final String homeworld;
   final String url;
+  final String imageIndex;
 
   People(
-    this.name,
-    this.height,
-    this.mass,
-    this.hairColor,
-    this.skinColor,
-    this.eyeColor,
-    this.birthYear,
-    this.gender,
-    this.homeworld,
-    this.url,
-  );
+      this.name,
+      this.height,
+      this.mass,
+      this.hairColor,
+      this.skinColor,
+      this.eyeColor,
+      this.birthYear,
+      this.gender,
+      this.homeworld,
+      this.url,
+      this.imageIndex);
 
   factory People.fromJson(dynamic data) {
+    String index = data['url'].toString().substring(29, 31).replaceAll('/', '');
     return People(
-      data['name'],
-      data['height'],
-      data['mass'],
-      data['hair_color'],
-      data['skin_color'],
-      data['eye_color'],
-      data['birth_year'],
-      data['gender'],
-      data['homeworld'],
-      data['url'],
-    );
+        data['name'],
+        data['height'],
+        data['mass'],
+        data['hair_color'],
+        data['skin_color'],
+        data['eye_color'],
+        data['birth_year'],
+        data['gender'],
+        data['homeworld'],
+        data['url'],
+        index);
   }
 }
 
