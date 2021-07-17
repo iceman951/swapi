@@ -38,6 +38,9 @@ class _StarwarsListStates extends State {
           itemCount: _people.length,
           itemBuilder: (context, index) {
             final People people = _people[index];
+            if (index + 1 == _people.length && _page <= 9) {
+              fetchPeople();
+            }
             return Container(
               child: Padding(
                 padding: EdgeInsets.only(left: 10, right: 10, top: 15),
