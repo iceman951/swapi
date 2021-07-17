@@ -20,30 +20,64 @@ class _StarwarsListStates extends State {
     super.initState();
     _page = 1;
     _people = [];
-
     fetchPeople();
   }
 
   Future<void> fetchPeople() async {
-    if (_page <= 9) {
-      var people = await _repo.fetchPeople(page: _page);
-      setState(() {
-        _people.addAll(people);
-        _page++;
-      });
-    }
+    var people = await _repo.fetchPeople(page: _page);
+    setState(() {
+      _people.addAll(people);
+      _page++;
+    });
   }
 
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: _people.length,
-        itemBuilder: (context, index) {
-          return Card(
-              child: Text(_people[index].name +
-                  " " +
-                  _people[index].imageIndex +
-                  "length: " +
-                  _people.length.toString()));
-        });
+    return Container(
+      child: ListView.builder(
+          padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+          itemCount: _people.length,
+          itemBuilder: (context, index) {
+            final People people = _people[index];
+            return Container(
+              child: Padding(
+                padding: EdgeInsets.only(left: 10, right: 10, top: 15),
+                child: InkWell(
+                  onTap: () {},
+                  child: Row(
+                    children: <Widget>[
+                      CircleAvatar(
+                        backgroundImage: NetworkImage(people.imageIndex),
+                        backgroundColor: Colors.blue,
+                        radius: 40,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Text(
+                            people.name,
+                            style: TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.bold),
+                          ),
+                          Text("BirthYear: " + people.birthYear,
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey)),
+                          Text("Mass: " + people.mass + " kg.",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey))
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }),
+    );
   }
 }

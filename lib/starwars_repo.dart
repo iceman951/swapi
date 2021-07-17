@@ -39,7 +39,7 @@ class People {
         data['gender'],
         data['homeworld'],
         data['url'],
-        index);
+        'https://starwars-visualguide.com/assets/img/characters/$index.jpg');
   }
 }
 
