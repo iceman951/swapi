@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/starwars_repo.dart';
+import 'package:getwidget/getwidget.dart';
 
 class StarwarsList extends StatefulWidget {
   @override
@@ -48,9 +49,10 @@ class _StarwarsListStates extends State {
                   onTap: () {},
                   child: Row(
                     children: <Widget>[
-                      CircleAvatar(
+                      GFAvatar(
                         backgroundImage: NetworkImage(people.imageIndex),
                         backgroundColor: Colors.blue,
+                        shape: GFAvatarShape.standard,
                         radius: 40,
                       ),
                       SizedBox(
